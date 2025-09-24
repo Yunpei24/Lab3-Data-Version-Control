@@ -1,0 +1,26 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/iris.json
+      hash: md5
+      md5: d6dd2485064647d16aa02859aad4660f
+      size: 15802
+    outs:
+    - path: data/iris_modified.json
+      hash: md5
+      md5: 1735f788254a65411b4018be19716b48
+      size: 14128
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/iris_modified.json
+      hash: md5
+      md5: 1735f788254a65411b4018be19716b48
+      size: 14128
+    outs:
+    - path: models/random_forest_model.joblib
+      hash: md5
+      md5: fbfb6f23c7f5578df9b5d0698332653c
+      size: 187377
