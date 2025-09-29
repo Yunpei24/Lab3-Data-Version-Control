@@ -1,0 +1,13 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - data/iris.json
+    outs:
+    - data/iris_modified.json
+  train:
+    cmd: python src/train.py
+    deps:
+    - data/iris_modified.json
+    outs:
+    - models/random_forest_model.joblib
